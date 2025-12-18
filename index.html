@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафе "Козерог"</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #c9a66b; 
+            --primary-hover: #b08d55;
+            --secondary-color: #fcfbf8; 
+            --accent-color: #e6ded3; 
+            --text-dark: #4a4a4a;
+            --text-light: #7a7a7a;
+            --white: #ffffff;
+            --border-color: #efe8e0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(201, 166, 107, 0.1);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 2px; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 166, 107, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-dark {
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Carousel */
+        .carousel-item {
+            height: 85vh;
+            min-height: 500px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            filter: brightness(0.9); 
+        }
+
+        .carousel-caption {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .hero-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid rgba(201, 166, 107, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .carousel-caption h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            text-shadow: none;
+            letter-spacing: 2px;
+        }
+        
+        .carousel-caption p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .bg-light-section {
+            background-color: var(--accent-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+            margin: 25px auto 0;
+        }
+
+        /* Advantages */
+        .advantage-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            transition: all 0.4s ease;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(201, 166, 107, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+        }
+        
+        .advantage-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        /* Reviews */
+        .review-card {
+            background: #fff;
+            padding: 40px;
+            text-align: center;
+            border-radius: 2px;
+            border: 1px solid var(--border-color);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .review-img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .review-date {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Menu */
+        .nav-pills .nav-link {
+            color: var(--text-light);
+            background: transparent;
+            font-size: 1rem;
+            padding: 12px 30px;
+            border-radius: 2px;
+            margin: 0 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .nav-pills .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(201, 166, 107, 0.1);
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+        
+        .menu-card {
+            border: 1px solid var(--border-color);
+            box-shadow: none;
+            transition: all 0.3s;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary-color);
+        }
+
+        .menu-card img {
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .menu-card .card-body {
+            padding: 30px;
+        }
+        
+        .menu-card .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Events */
+        .event-card {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 2px;
+        }
+        
+        .event-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .event-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .event-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(74, 74, 74, 0.9), transparent);
+            padding: 30px;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .event-overlay h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .event-overlay p {
+            font-weight: 300;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+
+        /* Order Form & Exterior Photo Block */
+        .order-section-container {
+            background: #fff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .exterior-photo-col {
+            background-image: url('/assets/exterior_new.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            position: relative;
+        }
+        
+        .exterior-photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(201, 166, 107, 0.2); /* Warm tint overlay */
+        }
+
+        .form-control, .form-select {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            color: var(--text-dark);
+            border-radius: 2px;
+            padding: 15px;
+            font-weight: 300;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(201, 166, 107, 0.2);
+        }
+
+        /* QR  */
+        .qr-section {
+            background-color: var(--secondary-color);
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .qr-img {
+            max-width: 180px;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        /* Contact Info Block */
+        .contact-info-section {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+        
+        .contact-card {
+            background: var(--secondary-color);
+            padding: 40px;
+            border-radius: 2px;
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 20px;
+            min-width: 30px;
+        }
+        
+        .contact-text h5 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-text p {
+            color: var(--text-light);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .map-container {
+            height: 100%;
+            min-height: 400px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .map-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c; 
+            padding: 80px 0 40px;
+            color: #dcdcdc;
+            font-weight: 300;
+        }
+        
+        footer h5 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        footer ul li {
+            margin-bottom: 15px;
+        }
+        
+        footer a {
+            color: #dcdcdc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal */
+        .modal-content {
+            border-radius: 2px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+        
+        /* Success Message Overlay */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .success-message {
+            background: #fff;
+            padding: 50px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 500px;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        
+        .success-icon {
+            color: var(--primary-color);
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .success-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .success-overlay.show .success-message {
+            transform: scale(1);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Комментарии -->
+    <div id="successOverlay" class="success-overlay">
+        <div class="success-message">
+            <i class="bi bi-check-circle-fill success-icon"></i>
+            <h2 style="font-family: 'Playfair Display', serif;">Спасибо за заказ!</h2>
+            <p class="lead mt-3">Мы свяжемся с вами в ближайшее время для подтверждения.</p>
+            <button class="btn btn-primary mt-4" onclick="closeSuccessMessage()">Отлично</button>
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">КОЗЕРОГ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#advantages">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Меню</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Мероприятия</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#order">Заказ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary btn-sm rounded-0 px-4" href="#bookingModal" data-bs-toggle="modal">Бронь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Карусель -->
+    <header id="home">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!-- Фото 1 -->
+                    <img src="день рождения.jpg" class="d-block w-100" alt="Кафе Козерог">
+                    <div class="carousel-caption">
+                        <div class="hero-content">
+                            <h1>Кафе "Козерог"</h1>
+                            <p class="lead">Уютное место для незабываемых моментов</p>
+                            <a href="#menu" class="btn btn-primary mt-2">Смотреть Меню</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- Фото 2 -->
+                    <img src="3.jpg" class="d-block w-100" alt="Интерьер">
+                     <div class="carousel-caption">
+                        <div class="hero-content">
+                            <h1>Праздничная Атмосфера</h1>
+                            <p class="lead">Идеально для свадеб и юбилеев</p>
+                            <a href="#events" class="btn btn-primary mt-2">Наши Залы</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- Фото 3 -->
+                    <img src="стол.jpg" class="d-block w-100" alt="Сервировка">
+                     <div class="carousel-caption">
+                        <div class="hero-content">
+                            <h1>Изысканная Кухня</h1>
+                            <p class="lead">Вкусные блюда для вашего стола</p>
+                            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#bookingModal">Забронировать Стол</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Преимущества -->
+    <section id="advantages" class="bg-light-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему Мы?</h2>
+                <p>Мы создаем комфорт и вкус для каждого гостя</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-cup-hot-fill"></i>
+                        </div>
+                        <h4>Вкусная Еда</h4>
+                        <p class="text-muted">Только свежие продукты и авторские рецепты.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4>Просторный Зал</h4>
+                        <p class="text-muted">Уютная атмосфера для компании любого размера - от 2 до 60 человек.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-music-note-beamed"></i>
+                        </div>
+                        <h4> Любая музыка на ваш вкус</h4>
+                        <p class="text-muted">Музыкальное сопровождение для создания праздничного настроения по вечерам.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+ <section id="reviews" class="py-5">
+  <div class="container">
+    <div class="section-title text-center mb-4">
+      <h2>Отзывы Гостей</h2>
+      <p>Что говорят о нас наши посетители</p>
+    </div>
+
+    <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="review-card d-flex flex-column align-items-center text-center px-3">
+            <img src="Анна.jpg" alt="Анна Омеличко" class="review-img rounded-circle mb-3" style="width:120px; height:120px; object-fit:cover;">
+            <p class="review-text fst-italic">"Отмечали юбилей мужа. Всё прошло великолепно! Кухня домашняя, очень вкусная. Гости были в восторге от горячего и закусок. Отдельное спасибо за красивую сервировку!"</p>
+            <div class="review-author fw-bold">Анна Омеличко</div>
+            <div class="review-date text-muted small">12 декабря 2025</div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card d-flex flex-column align-items-center text-center px-3">
+            <img src="Ольга.jpg" alt="Ольга Гунова" class="review-img rounded-circle mb-3" style="width:120px; height:120px; object-fit:cover;">
+            <p class="review-text fst-italic">"Заказывали поминальный обед. Всё организовали достойно, тихо и спокойно. Еда свежая, персонал тактичный. Спасибо за понимание и профессионализм."</p>
+            <div class="review-author fw-bold">Ольга Гунова</div>
+            <div class="review-date text-muted small">5 декабря 2025</div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card d-flex flex-column align-items-center text-center px-3">
+            <img src="Антон.jpg" alt="Антон Коновалов" class="review-img rounded-circle mb-3" style="width:120px; height:120px; object-fit:cover;">
+            <p class="review-text fst-italic">"Отличное место для корпоратива! Просторный зал, вкусная еда, есть место для танцев. Цены очень приятные. Обязательно вернемся ещё!"</p>
+            <div class="review-author fw-bold">Антон Коновалов</div>
+            <div class="review-date text-muted small">20 ноября 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+    <!-- Меню -->
+    <section id="menu" class="bg-light-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наше Меню</h2>
+                <p>Попробуйте разнообразие наших блюд</p>
+            </div>
+            
+            <ul class="nav nav-pills justify-content-center mb-5" id="menuTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="hot-tab" data-bs-toggle="pill" data-bs-target="#hot" type="button" role="tab">Горячее</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="snacks-tab" data-bs-toggle="pill" data-bs-target="#snacks" type="button" role="tab">Закуски</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="salads-tab" data-bs-toggle="pill" data-bs-target="#salads" type="button" role="tab">Салаты</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="cuts-tab" data-bs-toggle="pill" data-bs-target="#cuts" type="button" role="tab">Нарезки</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="menuTabsContent">
+                <!-- Горячее -->
+                <div class="tab-pane fade show active" id="hot" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="мясо по барски.jpg" class="card-img-top" alt="Мясо по-барски">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Отбивная свинина по-«Барски»</h5>
+                                        <span class="price">250 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Свинина, сол. огурец, грецкий орех, чеснок, зелень, майонез.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="мясо по королевски.jpg" class="card-img-top" alt="Мясо по-королевски">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Мясо по-Королевски</h5>
+                                        <span class="price">250 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Свинина, помидор, лук обжаренный, сыр, майонез.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="отбивная куриная с грибами и сыром.jpg" class="card-img-top" alt="Куриная отбивная">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Отбивная куриная с грибами</h5>
+                                        <span class="price">230 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Нежная куриная отбивная с шампиньонами и сырной шапкой.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="по деревенски.png" class="card-img-top" alt="Картофельные дольки">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Картофельные дольки по-деревенски</h5>
+                                        <span class="price">120 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Ароматный картофель с зеленью и чесноком.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="фри.jpg" class="card-img-top" alt="Картофель фри">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Картофель Фри</h5>
+                                        <span class="price">150 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Хрустящий золотистый картофель.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="рис с морепродуктами.jpg" class="card-img-top" alt="Рис с морепродуктами">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Рис с морепродуктами</h5>
+                                        <span class="price">350 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Рассыпчатый рис с креветками и овощами.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Закуски -->
+                <div class="tab-pane fade" id="snacks" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="жульен.jpg" class="card-img-top" alt="Жульен">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Жульен в тарталетках</h5>
+                                        <span class="price">180 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Грибы, курица, колбаса и сыр в хрустящей корзиночке.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="красная рыба.jpg" class="card-img-top" alt="Тарталетки">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Тарталетки с красной рыбой</h5>
+                                        <span class="price">80 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Красная рыба, огурец, творожный сыр, зелень.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="брускеты.jpg" class="card-img-top" alt="Брускетты">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Брускетты Ассорти</h5>
+                                        <span class="price">80 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">С беконом, помидорами черри, творожный сыром.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="рулетики.jpg" class="card-img-top" alt="Блинные рулетики">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Блинные рулетики</h5>
+                                        <span class="price">70 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">С красной рыбой, творожным сыром и листом салата.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="канаппе.jpg" class="card-img-top" alt="Канапе">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Канапе Ассорти</h5>
+                                        <span class="price">80 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Креветки, крабовые палочки, укроп.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="мешочки.jpg" class="card-img-top" alt="Мешочки">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Мешочки из блинов</h5>
+                                        <span class="price">80 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Фаршированные мясом курицы, яйцом, сыром и грибами.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Салаты -->
+                <div class="tab-pane fade" id="salads" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="грибной салат.jpg" class="card-img-top" alt="Салат">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Салат Грибной</h5>
+                                        <span class="price">250 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Маринованные грибы, лук, зелень и масло.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="цезарь-с-курицей.jpg" class="card-img-top" alt="Салат Цезарь">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Салат Цезарь</h5>
+                                        <span class="price">210 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Листья салата, черри, филе курицы, яйцо, сухарики, сыр Пармезан.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="сытный.png" class="card-img-top" alt="Салат">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Салат «Сытный»</h5>
+                                        <span class="price">150 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Куриная печень, морковь, лук, яйцо, яблоко, чеснок, сметана.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Нарезки -->
+                <div class="tab-pane fade" id="cuts" role="tabpanel">
+                     <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="мясная нарезка.jpg" class="card-img-top" alt="Мясная нарезка">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Ассорти мясное</h5>
+                                        <span class="price">500 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Колбаса сырокопченая, куриная, ветчина, грудинка копченая.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="ассорти рыбное.jpg" class="card-img-top" alt="Рыбная нарезка">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Ассорти рыбное</h5>
+                                        <span class="price">500 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Горбуша (балык), форель, лимон, оливки.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card menu-card h-100">
+                                <img src="ассорти овощное.jpg" class="card-img-top" alt="Овощная нарезка">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <h5 class="card-title">Ассорти овощное</h5>
+                                        <span class="price">400 ₽</span>
+                                    </div>
+                                    <p class="card-text text-muted">Огурец, помидор, болгарский перец, редис, лист салата, укроп.</p>
+                                    <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="showSuccessMessage()">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg px-5" data-bs-toggle="modal" data-bs-target="#fullMenuModal">Показать всё меню</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мероприятия -->
+    <section id="events" class="bg-light-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши Мероприятия</h2>
+                <p>Проведите важный день вместе с нами</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <img src="юбелии.jpg" alt="Юбилей">
+                        <div class="event-overlay">
+                            <h3>Юбилеи</h3>
+                            <p class="mb-0">Праздничное оформление и фотозона</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <img src="свадьба.jpg" alt="Поминальные обеды">
+                        <div class="event-overlay">
+                            <h3>Поминальные Обеды</h3>
+                            <p class="mb-0">Отдельный зал, спокойная атмосфера</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <img src="банкеты.jpg" alt="Банкеты">
+                        <div class="event-overlay">
+                            <h3>Банкеты</h3>
+                            <p class="mb-0">Изысканная сервировка столов</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4 g-4 justify-content-center">
+                 <div class="col-md-6">
+                    <div class="event-card">
+                        <img src="корпаратив.jpg" alt="Корпоратив">
+                         <div class="event-overlay">
+                            <h3>Корпоративы</h3>
+                            <p class="mb-0">Вместимость до 60 человек</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- форма заказа -->
+<section id="booking" style="max-width: 900px; margin: 0 auto; font-family: Arial, sans-serif; color: #333; border: 2px solid white; border-radius: 8px;">
+  <div style="display: flex; gap: 20px; background: #ccc9c9; padding: 30px; border-radius: 6px; align-items: stretch;">
+    <!-- Фото слева -->
+    <div style="flex: 1; display: flex; align-items: stretch;">
+      <img src="2.jpg" alt="Фото" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+    </div>
+    
+    <!-- Форма заказа -->
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <h2 style="margin-bottom: 10px; font-weight: 500;">Оформить Заказ</h2>
+      <p style="font-size: 14px; margin-bottom: 20px;">Заполните форму, и мы свяжемся с вами для подтверждения</p>
+      <form onsubmit="event.preventDefault(); showSuccessMessage();" style="font-size: 14px;">
+        <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+          <div style="flex: 1; display: flex; flex-direction: column;">
+            <label style="font-weight: 600; margin-bottom: 5px;">ВАШЕ ИМЯ</label>
+            <input type="text" placeholder="Иван Иванов" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column;">
+            <label style="font-weight: 600; margin-bottom: 5px;">ТЕЛЕФОН</label>
+            <input type="tel" placeholder="+7(999)000-00-00" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 15px; display: flex; flex-direction: column;">
+          <label style="font-weight: 600; margin-bottom: 5px;">EMAIL (НЕОБЯЗАТЕЛЬНО)</label>
+          <input type="email" placeholder="example@mail.ru" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        
+        <div style="margin-bottom: 20px; display: flex; flex-direction: column;">
+          <label style="font-weight: 600; margin-bottom: 5px;">КОММЕНТАРИЙ К ЗАКАЗУ</label>
+          <textarea rows="4" placeholder="Напишите ваши пожелания или список блюд" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
+        </div>
+        
+        <button type="submit" style="width: 100%; background: #b59660; border: none; color: white; padding: 12px; font-weight: 600; border-radius: 4px; cursor: pointer;">
+          ОТПРАВИТЬ ЗАКАЗ
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+    <!-- QR Code-->
+    <section class="qr-section py-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h2 class="mb-4">Мы в Вашем Смартфоне</h2>
+                    <div class="bg-white p-3 d-inline-block rounded shadow-sm mb-3">
+                         <img src="qrcod_9zgV.png" alt="QR Code" style="width: 150px;">
+                    </div>
+                    <p class="lead mb-4">Отсканируйте код, чтобы сохранить нас в контактах</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Бронирование Стола</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="event.preventDefault(); showSuccessMessage(); $('#bookingModal').modal('hide');">
+                        <div class="mb-3">
+                            <label class="form-label">Дата</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Время</label>
+                            <input type="time" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Тип мероприятия</label>
+                            <select class="form-select">
+                                <option>Ужин</option>
+                                <option>День Рождения</option>
+                                <option>Свадьба</option>
+                                <option>Корпоратив</option>
+                                <option>Другое</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Количество гостей</label>
+                            <select class="form-select">
+                                <option>1-2 человека</option>
+                                <option>3-4 человека</option>
+                                <option>5-10 человек</option>
+                                <option>Более 10 (Банкет)</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer border-0 px-0 pb-0">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-primary px-4">Забронировать</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Полное меню -->
+    <div class="modal fade" id="fullMenuModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Полное Меню</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Горячее</h5>
+                                </div>
+                                <img src="горячее.jpg" class="img-fluid" alt="Меню Горячее">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Закуски</h5>
+                                </div>
+                                <img src="закуски.jpg" class="img-fluid" alt="Меню Закуски">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Салаты</h5>
+                                </div>
+                                <img src="салаты.jpg" class="img-fluid" alt="Меню Салаты">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Нарезки</h5>
+                                </div>
+                                <img src="нарезка.jpg" class="img-fluid" alt="Меню Нарезки">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контакты -->
+    <section id="contacts" class="contact-info-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Контакты</h2>
+      <p>Мы всегда рады видеть вас</p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="contact-card">
+          <div class="contact-item">
+            <i class="bi bi-geo-alt-fill contact-icon"></i>
+            <div class="contact-text">
+              <h5>Адрес</h5>
+              <p>Почтовая улица, 57,<br>с. Нижняя Омка, Нижнеомский район</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="bi bi-telephone-fill contact-icon"></i>
+            <div class="contact-text">
+              <h5>Телефон</h5>
+              <p>+7 (902) 673-01-13</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="bi bi-envelope-fill contact-icon"></i>
+            <div class="contact-text">
+              <h5>Email</h5>
+              <p>tatyanainoz86@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="mt-4 pt-3 border-top border-light">
+            <button class="btn btn-outline-primary w-100" onclick="alert('Мы перезвоним вам в ближайшее время!')">Заказать звонок</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-7">
+        <div class="map-container" style="height: 350px;">
+          <!-- Вставляем Google Maps iframe с заданным адресом -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2263.57991006416!2d74.92920687736722!3d55.43511967296832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4300f1eea7944fbf%3A0x4e3ae00870f3728d!2z0J_QvtGH0YLQvtCy0LDRjyDRg9C7LiwgNTcsINCd0LjQttC90Y_RjyDQntC80LrQsCwg0J7QvNGB0LrQsNGPINC-0LHQuy4sIDY0NjYyMA!5e0!3m2!1sru!2sru!4v1765823521865!5m2!1sru!2sru"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+    <!-- Подвал -->
+    <footer id="footer-contacts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Кафе "Козерог"</h5>
+                    <p>Лучшее место для отдыха и праздников.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://t.me/tatjachka67" target="_blank" title="Telegram"><i class="bi bi-telegram"></i></a>
+                        <a href="https://wa.me/+7 (902) 673-01-13" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Контакты</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt me-2 text-primary"></i> Почтовая улица, 57, с. Нижняя Омка, Нижнеомский район</li>
+                        <li><i class="bi bi-telephone me-2 text-primary"></i> +7 (902) 673-01-13</li>
+                        <li><i class="bi bi-envelope me-2 text-primary"></i> tatyanainoz86@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Режим работы</h5>
+                    <ul class="list-unstyled">
+                        <li>Пн-Пт: 10:00 - 23:00</li>
+                        <li>Сб-Вс: 11:00 - 00:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4" style="opacity: 0.1;">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Кафе "Козерог". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function showSuccessMessage() {
+            const overlay = document.getElementById('successOverlay');
+            overlay.classList.add('show');
+            // Auto hide after 3 seconds
+            // setTimeout(() => {
+            //     closeSuccessMessage();
+            // }, 3000);
+        }
+
+        function closeSuccessMessage() {
+            const overlay = document.getElementById('successOverlay');
+            overlay.classList.remove('show');
+            
+            // If modal is open, hide it
+            const modalElement = document.getElementById('bookingModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            if (modal) {
+                modal.hide();
+            }
+        }
+    </script>
+</body>
+</html>
